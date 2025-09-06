@@ -12,6 +12,6 @@ jobs:
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           aws-region: ap-northeast-1
-      - run: aws s3 cp s3://cm-natsume-data-bucket/model.tar .
+      - run: aws s3 cp --quiet s3://cm-natsume-data-bucket/model.tar .
       - run: tar xf model.tar
       - run: find . -type f | sort
