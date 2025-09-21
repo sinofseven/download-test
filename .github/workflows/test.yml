@@ -8,10 +8,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - run: uv sync
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           aws-region: ap-northeast-1
       - run: aws s3 cp --quiet s3://cm-natsume-data-bucket/model.tar .
+      - run: uv run python main.py
       - run: tar xf model.tar
       - run: find . -type f | sort
