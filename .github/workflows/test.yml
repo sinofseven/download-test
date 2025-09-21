@@ -23,3 +23,4 @@ jobs:
       - run: tar xf model.tar
       - run: find . -type f | sort
       - run: ls -F
+      - run: find ./models--sentence-transformers--multi-qa-mpnet-base-cos-v1 | sort
