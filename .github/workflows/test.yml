@@ -22,3 +22,4 @@ jobs:
       - run: uv run python main.py
       - run: tar xf model.tar
       - run: find . -type f | sort
+      - run: ls -F
